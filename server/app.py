@@ -28,8 +28,11 @@ def messages():
     all_messages = Message.query.all()
 
     message_dicts=[ message.to_dict(['body','username', 'created_at']) for message in all_messages ]
+    return jsonify([message.to_dict() for message in all_messages])
+
+
     
-    return message_dicts
+    
 
 @app.route('/messages/<int:id>')
 def messages_by_id(id):
