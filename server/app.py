@@ -31,18 +31,18 @@ def messages():
     
     return message_dicts
 
-# @app.route('/messages/<int:id>')
-# def messages_by_id(id):
-#     found_message = Message.query.where(Message.id == id).first()
+@app.route('/messages/<int:id>')
+def messages_by_id(id):
+    found_message = Message.query.where(Message.id == id).first()
 
-#     if found_message:
-#         return found_message.to_dict(), 200
+    if found_message:
+        return found_message.to_dict(), 200
     
-#     else:
-#          return {"status":404,"message": "Not found"}, 404
+    else:
+         return {"status":404,"message": "Not found"}, 404
 
 @app.post('/messages')
-def posted_new_message(id):
+def posted_new_message():
     Body = request.json 
 
     try:
