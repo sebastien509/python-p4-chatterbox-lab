@@ -42,12 +42,12 @@ def messages_by_id(id):
          return {"status":404,"message": "Not found"}, 404
 
 @app.post('/messages')
-def posted_new_message():
+def posted_new_message(id):
     Body = request.json 
 
     try:
 
-        new_message = Message( body= Body.get('body'), username= Body.get('username'))
+        new_message = Message( id= Body.get('id'), body= Body.get('body'), username= Body.get('username'))
 
         db.session.add( new_message)
         db.session.commit()
